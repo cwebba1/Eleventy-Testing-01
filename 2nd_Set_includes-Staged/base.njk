@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en_US">
+<head>
+    <title>{{title}}</title>
+    {%include 'meta.njk'%}
+
+{% block fonts %}
+<!--  add font list -->
+    {% include "fonts.njk" %}
+{% endblock %}
+
+{% block styles %}
+<!--  add styles list -->
+    {% include "styles.njk" %}
+{% endblock %}
+
+</head>
+<body>
+    {%include 'header.njk'%}
+    <main> 
+{% block content %}
+<!--  <h1>{{ title }}</h1> -->
+
+    {{content | safe}}
+
+{% endblock %}
+    </main>   
+    {%include 'footer.njk'%}
+</body>
+
+  <script src="{{ root }}assets/js/simpleLightbox.min.js"></script>
+  <script>
+    new SimpleLightbox({elements: '.lightbox-img a'});
+    // or if using jQuery
+    // $('.imageGallery1 a').simpleLightbox();
+    </script>
+
+</html>

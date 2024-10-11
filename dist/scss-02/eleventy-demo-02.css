@@ -1,0 +1,859 @@
+/* CSS for 2nd Set Eleventy Demo */
+/* eleventy-demo-02.css */
+
+/* This declaration sets the order of layers, regardless of appearance in the cascade. Support is first in cascade. Demo is next and overrides support */
+  @layer fonts vars reset, base, layout;
+
+
+
+  /* The layout layer holds the guts of the prototype. It has priority because of the @layer statement above. */
+
+ /*   *   *   [  L A Y O U T  ]   *   *    */
+@layer layout {
+
+  .flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-spacer, 1em);
+}
+
+.container {
+  margin-inline: auto;
+  padding-inline: 1.5em;
+  max-width: 72rem;
+}
+
+.container--narrow {
+  max-width: 65rem;
+}
+
+.flex-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap, 1em);
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.text-center {
+  text-align: center;
+}
+  
+/* typography */
+
+.article-title,
+.section-title {
+color: var(--red-09); /*--clr-primary-140*/
+}
+
+.article-title {
+font-size: var(--fs-700);
+}
+
+.section-title {
+font-size: var(--fs-600);
+}
+
+/* //////////////////////
+Header
+/////////////////////// */
+
+.page-header {
+  padding: 1em 0;
+  background-image: url(/assets/images/retina-dust.png);
+}
+
+.page-header__content {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 720px) {
+  .page-header__content {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.nav-list {
+  margin: 0 1em 0 0;
+  padding: 0;
+}
+
+.nav-list a {
+  color: var(--blu-09);
+  text-decoration: none;
+}
+
+.nav-list a:focus,
+.nav-list a:hover {
+  color: var(--blu-07); /* --clr-primary-080 */
+  text-decoration: underline;
+}
+
+nav ul a {
+  color: var(--blu-09); /* --clr-neutral-900*/
+  text-decoration: none;
+  padding:0.125em 0.25em;
+}
+
+nav ul a:focus,
+nav ul a:hover {
+  color: var(--blu-07); /*--clr-primary-080*/
+  text-decoration: none;
+  background: var(--blu-02); /* #EAF9DB */
+  padding:0.125em 0.25em;
+  border-radius: 6px;
+}
+
+/** Cwebba Top Nav */
+
+nav ul { 
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap, 1em);
+  list-style: none;
+}
+
+nav ul li { 
+  text-decoration: none;
+}
+
+li ul, li ol {
+  margin: 0;
+}
+
+nav ul a,
+nav ul a {
+  text-decoration: none;
+}
+
+/* dropdown */
+nav ul li:nth-child(3) {
+  position: relative;
+/* background-color:rgba(148, 25, 85, 0.4); */
+}
+
+nav ul ul {
+  background: var(--red-02); /* #F9FBFA */
+/*  background: linear-gradient(180deg, rgba(253, 254, 251, 0.9) 0%, #f9fbfa 17%, #a9c6b8 100%);*/
+  color: var(--blu-09); /* #fff*/
+  display: none;
+  margin: 0;
+  padding: 0 0.5em;
+  width: 5em;
+  height: 3.375em;
+  /* HERE this has an affect - 150% width */
+  position: absolute;
+  top: 1.5em;
+  left: -1em;
+  z-index: 2;
+  border: solid 1px #EFEFEF;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+nav ul li:hover > ul {
+  display: block;
+}
+
+.logo-box-head {
+  width:12em;
+}
+
+
+  /* //////////////////////
+    Footer
+    /////////////////////// */
+  
+    .site-footer {
+        --logo-color: currentColor;
+        padding: 2em 0;
+        color: var(--red-12); /* var(--neutral-600) */
+        background-color: var(--yel-02); /*--clr-primary-030*/
+/*        background-color: var(--shhh); --clr-primary-500*/
+        background-image: url(/assets/images/retina-dust.png);
+        text-align: center;
+      }
+
+      .logo-box-footer {
+        max-width:12em;
+        margin:auto;
+    }
+
+    .copyright {
+      font-size:66%;
+    }
+
+  @media (min-width: 45em) {
+    .hero > div {
+      grid-auto-flow: column;
+    }
+  }
+  
+  .featured-articles {
+    background-color: color-mix(in hsl shorter hue, var(--grn-03) 20%, var(--red-03));
+    background-color: hsl(66 50% 60% / 0.125);
+  }
+  
+  .articles__list {
+    --flow-spacer: 3rem;
+    margin: 6rem 0;
+  }
+  
+    .main-article {
+      margin-bottom: 3rem;
+    }
+  
+    .main-article__figure figcaption {
+      margin: 1rem 0;
+      font-size: var(--fs-300);
+      opacity: .9;
+    }
+  
+  
+  .snippet {
+    display: grid;
+    gap: 1em;
+    grid-template-areas:
+      "image"
+      "title"
+      "meta"
+      "body"
+      "button";
+  }
+  
+  .snippet__image {
+    grid-area: image;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .snippet__title {
+    grid-area: title;
+  }
+  .snippet__meta {
+    grid-area: meta;
+    color: var(--red-10); /*--clr-neutral-300*/
+  }
+  
+  .snippet__meta span {
+    color: var(--red-10); /* --clr-neutral-900 */
+  }
+  
+  .snippet .btn {
+    grid-area: button;
+  }
+  
+  .snippet__title {
+    color: var(--red-09); /* --clr-primary-110 */
+    font-size: var(--fs-500);
+  }
+  
+  .snippet__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .snippet__title a:hover,
+  .snippet__title a:focus {
+    color: var(--red-05); /* --clr-primary-130 */
+  } 
+
+  @media (min-width: 45em) {
+    .snippet {
+      grid-template-areas:
+        "image title"
+        "image meta"
+        "image body"
+        "image button";
+      grid-column-gap: 3em;
+      grid-template-columns: 40% 1fr;
+      grid-template-rows: min-content min-content min-content 1fr;
+    }
+  }
+
+  .postgrid__list {
+    display:grid; 
+    gap:3rem 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  @media(width > 760px) {
+.postgrid__list { grid-template-columns:repeat(auto-fit, minmax(calc(50% - 1.5em), 1fr));
+}
+}
+@media(width > 1220px) {
+.postgrid__list { 
+grid-template-columns:repeat(auto-fit, minmax(calc(33% - 3em), 1fr));
+}
+}
+
+.postgrid__list li {
+  display:flex;
+  flex: 1 0 auto;
+}
+  .card {
+    display: flex;
+    flex-direction:column;
+        background:hsla(12,30%,96%,0.4);
+    /*flex-basis: 22em; */   
+    /* flex: 0 1 22em;  flex-shrink = 1 */
+    /*flex-grow: 1; */
+      padding:0;
+      border-radius:9px;
+      box-shadow: 3px 8px 42px 9px hsla(210,40%,50%,0.3);
+      box-shadow: 2px 6px 32px 3px hsla(240,30%,50%,0.4);
+        }
+
+.card__image {
+  display: block;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+/*	background-size: cover; */
+  object-fit: cover;
+	aspect-ratio: 4 / 3;
+}
+
+  .card h2 {
+    color:hsla(0,50%,40%,1);
+  }
+
+  .card_content {
+    display: flex;
+    flex-direction:column;
+    align-items: stretch;
+    line-height: var(--fs-400);
+        padding: 0.5rem 1rem;
+    flex-grow: 2;
+    justify-items: stretch;
+    margin-block: 1rem;
+  }
+  
+  .snippet__body {
+    flex-grow: 2;
+  }
+  .btn {
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1;
+    padding: 0.5em 1.75em;
+    border-radius: 0.375em;
+    align-self: center;
+    justify-self: start;
+    margin-block:1.5rem 1rem;
+  }
+  
+  .btn:focus {
+    outline: 0.125em solid var(--red-06); /* --clr-primary-160*/
+    outline-offset: 0.25em;
+  }
+  
+  .btn--primary {
+    background: var(--red-09); /* --clr-primary-120 */
+    color: var(--red-01);; /* var(--red-09);  --clr-neutral-100*/
+    font-weight: var(--fw-700);
+    border: 2px solid var(--red-01);
+  }/*var(--clr-primary-110)*/
+  .btn--primary:hover,
+  .btn--primary:focus {
+    color: var(--red-09);; /*   --clr-neutral-100*/
+    background: var(--red-05); /* --clr-primary-130 */
+    border-color: var(--red-09); /* --clr-primary-090*/
+  }
+  
+  /* this uses KP neutral vars. Transferring nuetrals to vars-colors.scss 081023*/
+  .btn--neutral {
+    background-color: var(--clr-neutral-100);
+    color: var(--clr-neutral-900);
+    font-weight: var(--fw-700);
+    border: 2px solid var(--clr-neutral-900);
+  }
+  
+  .btn--neutral:hover,
+  .btn--neutral:focus {
+    color: var(--clr-neutral-100);
+    background-color: var(--clr-neutral-900);
+  }
+
+
+article > a {
+/*  float: left;
+  width: 33.3333%;  */
+  padding: 1px; 
+  box-sizing: border-box; 
+  position: relative;
+
+}
+
+article > a:first-child { left: -1px; }
+article > a:last-child { right: -1px; }
+
+article > a > figure > img {
+  display: block; width: 100%;
+  }
+
+} /* END Layout */
+
+ /*   *   *   [  B A S E  ]   *   *    */
+@layer base {
+
+html {
+  font-size:16px;
+  line-height:1.5;
+}
+
+body {
+  font-family: var(--ff-body);
+  font-size: var(--fs-400);
+  color: var(--front);
+  background: var(--back);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+  flex: 1;
+    margin-inline: auto;
+    max-width: 72rem;
+}  
+
+/* 072423+072523 NEW */
+article {
+  display: flow-root;
+  overflow: hidden; 
+  /*margin: 30px -20px; */
+}
+
+
+a {word-wrap:break-word;
+background:transparent;
+border:0;
+color:#06c;
+font-size:inherit;
+line-height:inherit;
+margin:0;
+outline:0;
+overflow-wrap:break-word;
+padding:0;
+-webkit-text-decoration:none;
+text-decoration:none;
+transition:color .2s linear;
+vertical-align:baseline}
+
+a:focus{outline:0}
+
+a:active,a:hover { outline:none;
+}
+
+a:focus,a:hover {color:#09f;
+-webkit-text-decoration:underline;
+text-decoration:underline;
+}
+
+a:visited{color:#900000;
+-webkit-text-decoration:none;
+text-decoration:none}
+
+a img{border:0}
+
+
+blockquote,h1,h2,h3,h4,h5,h6{ color:#6a5a4e;
+font-family: var(--head-ft) sans-serif;;
+/* Ubuntu,Verdana,Corbel,Lucida Grande,Lucida Sans Unicode,Lucida Sans,DejaVu Sans,Bitstream Vera Sans,Liberation Sans,Verdana Ref; */
+font-weight:400;
+line-height:1.2;
+margin-bottom:.35em;
+margin-top:0;
+}
+
+    h1 {
+      font-size: calc(var(--rem) * 2);
+        line-height: var(--typography-spacing-vertical);
+    }
+      
+    h2 {
+        font-size: calc(var(--rem) * 1.75);
+        /*    --typography-spacing-vertical: 2.625rem; */
+        line-height: var(--typography-spacing-vertical);
+    }
+    
+    h3 {
+      font-size: calc(var(--rem) * 1.5);
+      line-height: var(--typography-spacing-vertical);
+      /*      --typography-spacing-vertical: 2.25rem;*/
+    }
+    
+    h4 {
+      --font-size: 1.25rem;
+      font-size: calc(var(--rem) * 1.25);
+      /*  --typography-spacing-vertical: 1.874rem;*/
+      line-height: var(--typography-spacing-vertical);
+    }
+    
+    h5 {
+      font-size: calc(var(--rem) * 1.125);
+      line-height: var(--typography-spacing-vertical);
+    }
+    h6 {
+        font-size: 1rem;
+        line-height: var(--typography-spacing-vertical);
+    }
+
+    blockquote {
+      /*  color: #241000; */
+      font-style: italic;
+      color: var(--front);
+        font-size: 1.0625em;
+        line-height: 1.325em;
+        padding: 0.25em 1% 0.375em 2%;
+        margin: 0 0 0.5em 0;
+        background: hsla(150, 50%, 86%, 0.3);
+        border-radius:0.5rem;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0 1px 6px 6px hsla(150, 50%, 90%, 0.3);
+}
+
+.border{border:1px solid #ddd;
+}
+
+img {
+  max-width:100%;
+  display:block;
+  }
+    
+figure img, figure object, figure embed, figure video {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  border:1px solid #662323;
+}
+
+svg:not(:root){overflow:hidden}
+
+figure {
+  padding: 0;
+  margin: 0 0 1em;
+  font-size: 1rem;
+}
+
+figure a,figure embed,figure img,figure object,figure video{display:inline-block;
+height:auto;
+max-width:100%;
+width:100%;
+}
+
+figure img{margin-bottom:.25em}
+
+figcaption{color:#625b5b;
+font-size:1em;
+line-height:1;
+margin:0 0 .25em}
+
+figcaption p{color:#625b5b;
+font-size:.8475em;
+line-height:1.25;
+margin:0 .5em;
+text-align:left}
+
+figcaption p a{display:inline}
+
+figcaption a{color:inherit;
+-webkit-text-decoration:none;
+text-decoration:none}
+
+figcaption a:hover{color:#8c4103;
+-webkit-text-decoration:underline;
+text-decoration:underline}
+
+ul{ list-style-position: inside;
+}
+
+ul li {
+  line-height:var(--fs-400);
+  margin-bottom:0.325em;
+}
+
+ul.indent li {
+  padding-left: 0.325em;
+  text-indent: -1.325em;
+}
+
+nav ul{list-style:none}
+
+nav li{display:inline}
+
+li ol,li ul{margin:0}
+
+b,strong{font-weight:600}
+
+b,em,i,strong{font-family:inherit}
+
+em,i{font-style:italic}
+
+pre{white-space:pre;
+white-space:pre-wrap}
+
+.wrap-text,pre{word-wrap:break-word}
+
+.wrap-text{-epub-hyphens:auto;
+-webkit-hyphens:auto;
+hyphens:auto;
+overflow-wrap:break-word;
+-epub-word-break:break-all;
+-ms-word-break:break-all;
+word-break:break-all;
+word-break:break-word}
+
+span.nowrap{line-height:inherit;
+white-space:nowrap}
+
+.hyphenate{-webkit-hyphenate-before:2;
+-webkit-hyphenate-after:3;
+/*hyphenate-lines:3;*/
+-webkit-hyphens:auto;
+-epub-hyphens:auto;
+hyphens:auto;
+-epub-word-break:break-all;
+-ms-word-break:break-all;
+word-break:break-all;
+word-break:break-word;
+  }
+
+
+}
+
+
+ /*   *   [  R E S E T  ]   *    */
+@layer reset {
+
+:root{
+  --bod-ft:"Open Sans";
+  --head-ft:"Ubuntu variable";
+  --mono-ft:"Ubuntu Mono variable";
+  line-height:1.5;
+}
+
+figure, ul { margin:0;
+}
+
+* { box-sizing:border-box; 
+}
+
+*,:after,:before{ box-sizing:inherit;
+}
+
+}
+
+ /*   *   *   [   V A R S  ]   *   *    */
+@layer vars {
+
+/*!  _cwebba-vars.scss  */
+
+:root {
+    --clr-primary-010: #f8feeb;
+    --clr-primary-020: #eefff2;
+    --clr-primary-030: #e7fefa;
+    --clr-primary-040: #aecbd4;
+    --clr-primary-050: #8296ae;
+    --clr-primary-060: #646182;
+    --clr-primary-070: #4a304d;
+    --clr-primary-080: #2b0315;
+    --clr-primary-090: #4f0d25;
+    --clr-primary-100: #771b33;
+    --clr-primary-110: #a12b3d;
+    --clr-primary-120: #cd3c41;
+    --clr-primary-130: #fa503d;
+    --clr-primary-140: #fc6f38;
+    --clr-primary-150: #fb8a40;
+    --clr-primary-160: #f8a253;
+    --clr-primary-170: #f4b86e;
+    --clr-primary-180: #f0cc8c;
+    --clr-primary-190: #eedeac;
+    --clr-primary-200: #f0edcc;
+    
+    /*! BRAND: */
+    --brand-100: #771b33;
+    --brand-200: #a12b3d;
+    --brand-300: #cd3c41;
+    --brand-400: #fa503d;
+    --brand-500: #fc6f38;
+    --brand-600: #fb8a40;
+    --brand-700: #f8a253;
+    --brand-800: #f4b86e;
+    --brand-900: #f0cc8c;
+        
+    
+    --fs-300: 0.9375rem;
+    --fs-400: 1.0625rem;
+    --fs-500: 1.375rem;
+    --fs-600: 1.875rem;
+    --fs-700: 2rem;
+
+
+    --ff-body: "Ysabeau", "Roboto", sans-serif;
+    --ff-heading: "Outfit", sans-serif;
+    /* "Taviraj", "Playfair Display", serif */
+    // font-style:normal;
+
+    --fw-100: 100;
+    --fw-200: 200;
+    --fw-300: 300;
+    --fw-400: 400;
+    --fw-500: 500;
+    --fw-600: 600;
+    --fw-700: 700;
+    --fw-800: 800;
+    --fw-900: 900;
+
+--fw-1: 100;
+--fw-2: 200;
+--fw-3: 300;
+--fw-4: 400;
+--fw-5: 500;
+--fw-6: 600;
+--fw-7: 700;
+--fw-8: 800;
+--fw-9: 900;
+
+--font-letterspacing-0: -.05em;
+--font-letterspacing-1: .025em;
+--font-letterspacing-2: .050em;
+--font-letterspacing-cwebba: 0.0625em;
+--font-letterspacing-3: .075em;
+--font-letterspacing-4: .150em;
+--font-letterspacing-5: .500em;
+--font-letterspacing-6: .750em;
+--font-letterspacing-7: 1em;
+
+--typography-spacing-vertical: calc(1em + 0.5rem);
+
+//--brand: var(--golf-green);
+}
+
+:where(html) {
+    --font-sans: "Ysabeau", "Outfit", "Roboto", "Open Sans", system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans, Arial, "Helvetica Neue", Helvetica,sans-serif;
+    --font-serif: "Taviraj", "Lora", ui-serif,serif;
+    --font-brand-sans: "Ysabeau", "Ubuntu", Verdana, "Corbel", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+    --font-mono: Dank Mono,Operator Mono,Inconsolata,Fira Mono,ui-monospace,SF Mono,Monaco,Droid Sans Mono,Source Code Pro,monospace;
+    --rem:18px;
+}
+
+/* END cwebba-vars.scss */
+
+:root {
+    --fs-300: 0.9375rem;
+    --fs-400: 1.0625rem;
+    --fs-500: 1.375rem;
+    --fs-600: 1.875rem;
+    --fs-700: 2rem;
+  
+//    --ff-body: "Ysabeau", "Roboto", sans-serif;
+//    --ff-heading: "Outfit", sans-serif;
+    /* "Taviraj", "Playfair Display", serif */
+//    --fw-400: 400;
+//    --fw-700: 700;
+//    --fw-900: 900;
+/*  
+    --clr-primary-200: hsla(169, 70%, 95%, 1);
+    --clr-primary-300: hsla(169, 100%, 39%, 1);
+    --clr-primary-400: hsla(169, 100%, 26%, 1);
+    --clr-primary-500: hsla(169, 100%, 16%, 1);
+*/  
+    --clr-neutral-100: hsla(0, 0%, 100%, 1);
+    --clr-neutral-300: hsla(0, 0%, 50%, 1);
+    --clr-neutral-400: hsla(0, 0%, 40%, 1);
+    --clr-neutral-500: hsla(0, 0%, 60%, 1);
+    --clr-neutral-900: hsla(0, 0%, 10%, 1);
+  }
+  
+  @media (min-width: 35em) {
+    :root {
+      --fs-300: 1rem;
+      --fs-400: 1.125rem;
+      --fs-500: 1.5rem;
+      --fs-600: 2.25rem;
+      --fs-700: 3rem;
+    }
+  }
+  
+}
+
+ /*   *   [   F O N T S  ]   *    */
+@layer fonts {
+
+@charset "UTF-8";
+@font-face {
+    font-family: 'Ubuntu variable';
+    font-stretch: 100%; /*  min and max value for the width axis, expressed as percentage */
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 100  800; /*  min and max value for the weight axis */
+    src: url(fonts/Ubuntuwdthwght.woff)
+    format('woff2-variations');
+    }
+    
+  @font-face {
+    font-family: 'Ubuntu variable';
+    font-stretch: 100%; /*  min and max value for the width axis, expressed as percentage */
+    font-optical-sizing: auto;
+    font-style: italic;
+    font-weight: 100  800; /*  min and max value for the weight axis */
+    src: url(fonts/Ubuntu-Italicwdthwght.woff)
+    format('woff2-variations');
+    }
+  
+  @font-face {
+    font-family: 'Ubuntu Mono variable';
+    font-style: normal;
+    font-weight: 100  800; /*  min and max value for the weight axis */
+    src: url(fonts/UbuntuMono[wght]-latin-v0.869.woff2) 
+    format('woff2-variations');
+    }
+  
+  @font-face {
+    font-family: "Open Sans";
+    font-stretch: 100%; /* Note that font-stretch is a % of normal width */
+    font-optical-sizing: auto;
+    font-style: normal; /* See note below */
+    font-weight: 300  800;
+    src: url('fonts/OpenSans-VariableFont_wdth,wght.woff2') format('woff2');
+  }
+    
+  @font-face {
+  font-family: "Open Sans";
+  font-stretch: 100%; /* Note that font-stretch is a % of normal width */
+  font-optical-sizing: auto;
+  font-style: italic; /* See note below */
+  font-weight: 300  800;
+  src: url('fonts/OpenSans-Italic-VariableFont_wdth,wght.woff2') format('woff2');
+  }
+
+/** typgraphy */
+
+/*!
+2/16 = 0.125
+3/16 = 0.1875
+4/16 = 0.25
+5/16 = 0.3125
+6/16 = 0.375
+7/16 = 0.4375
+8/16 = 0.5
+9/16 = 0.5625
+10/16 = 0.625
+11/16 = 0.6875
+12/16 = 0.75
+13/16 = 0.8125
+14/16 = 0.875
+15/16 = 0.9375
+18/16 = 1.125
+19/16 = 1.1875
+20/16 = 1.25
+22/16 = 1.375
+*/
+
+}

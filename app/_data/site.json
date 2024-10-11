@@ -1,0 +1,9 @@
+{
+    "name": "EleventyOne",
+    "url": "",
+    "authorName": "Craig Webb",
+    "authorUrl": "https://CraigWebbArt.com",
+    "description": "Craig Webb Art – Presentation Website",
+    "favicon": "https://www.craigwebbart.com/favicon-32x32.png",
+    "templateEngineOverride": "njk,md"
+  }

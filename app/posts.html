@@ -1,0 +1,27 @@
+---
+layout: base.njk
+title: Posts
+author: Craig Webb
+date: 2024-06-05
+description: This is the Posts page.
+metaimage: assets/images/Open-to-Work.jpeg
+templateEngineOverride: njk,md
+eleventyNavigation:
+  key: Posts
+  order: 200
+---
+<div class="section container">
+<h1 class="section-title">Recent articles</h1>
+<ul>
+{% for post in collections.post %}
+{% include 'article-snippet.njk' %}
+{% endfor %}
+</ul>
+
+
+{# <ul role="list" class="articles__list flow">
+{%- for post in collections.post reversed -%}
+{% include 'article-snippet.njk' %}
+{%- endfor -%}
+</ul> #}
+</div>

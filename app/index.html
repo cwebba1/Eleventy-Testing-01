@@ -1,0 +1,32 @@
+---
+layout: base.njk
+title: Welcome
+author: Craig Webb
+date: 2024-06-05
+description: This is the index home page.
+metaimage: assets/images/Open-to-Work.jpeg
+templateEngineOverride: njk,md
+eleventyNavigation:
+  key: Home
+  order: 100
+---
+TEST ONE – Does not work.
+<ul>
+{% for post in collections.post %}
+<li><a href="{{ root }}{{ post.url }}">{{ post.data.title }}</a></li>
+{% endfor %}
+</ul>
+
+TEST TWO
+<ul>
+{% for post in collections.post %}
+<li><a href="{{ post.url | url }}">{{ post.data.title }}</a>
+</li>
+{% endfor %}
+</ul>
+
+	<h1>Hello World!</h1>
+    <p>Welcome to Eleventy! Are we having fun yet? I hope so.</p>
+
+  <img src="assets/images/Daniel-Barkley.jpg" alt="Daniel-Barkley painting">
+
